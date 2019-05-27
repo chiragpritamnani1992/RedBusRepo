@@ -90,11 +90,11 @@ public class Wrappermethods {
 	
 	
 	
-	public void waitforElementClickable(WebElement element) throws TimeoutException
+	public void waitforElementClickable(String element) throws TimeoutException
 	{
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 30);
-			wait.until(ExpectedConditions.elementToBeClickable(element));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(element)));
 		} catch (NoSuchElementException e) {
 			
 			e.printStackTrace();
@@ -103,7 +103,7 @@ public class Wrappermethods {
 		}
 	}
 	
-	public static void cikcByJS(WebElement ElementName)
+	public void cikcByJS(WebElement ElementName)
 	{
 		JavascriptExecutor js = ((JavascriptExecutor)driver);
 		js.executeScript("arguments[0].click();", ElementName);

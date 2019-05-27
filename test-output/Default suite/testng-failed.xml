@@ -5,10 +5,8 @@
     <classes>
       <class name="com.qa.testcases.ManageBookingsTest">
         <methods>
-          <include name="verifyTitleTest"/>
-          <include name="BookingSeats"/>
+          <include name="BookingSeats" invocation-numbers="0"/>
           <include name="TearDown"/>
-          <include name="enterLocation"/>
           <include name="SetUp"/>
         </methods>
       </class> <!-- com.qa.testcases.ManageBookingsTest -->

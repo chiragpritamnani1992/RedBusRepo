@@ -9,13 +9,16 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import com.qa.wrappermethod.WebEventListener;
 
 public class TestBase {
 
 	public static WebDriver driver;
 	static Properties prop;
-	
-	
+	static EventFiringWebDriver e_driver;
+	static WebEventListener eventlistener;
 	
 	public TestBase()
 	{
@@ -47,12 +50,18 @@ public class TestBase {
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 		}
-		else
+		else if(browsername.equals("firefox"))
 		{
 			System.setProperty("webdriver.gecko.driver","C:\\Users\\home\\workspace\\RedBus_Assignment"
 					+ "\\src\\main\\java\\com\\qa\\drivers\\geckodriver.exe");
 			driver = new FirefoxDriver();
 		}
+		
+		
+		e_driver = new EventFiringWebDriver(driver);
+		eventlistener = new WebEventListener();
+		e_driver.register(eventlistener);
+		driver= e_driver;
 		
 		
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);

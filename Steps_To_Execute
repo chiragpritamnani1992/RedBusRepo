@@ -1,0 +1,19 @@
+Assignment Name : RedBus.in 
+
+In this assignment, we are entering basic details like ( source, destination, and date ) and we are clicking on the submit button.
+As soon as you enter all the details, All the bus details will be displayed and we have to select the type and select the seats and click
+on proceed to book button. After clicking on the button, we have to enter the passenger basics details and click on proceed to pay button.
+
+
+So there are 2 ways to run the script through eclipse:
+
+1) Click on testng.xml file > Click on Run As  > TestNG Suite
+
+   In testng.xml, we have to provide the class name that needs to be run
+   
+2) You can directly through the class
+    
+    Go to class file under src/ test / java 
+    Right click on test class.java > Click on Run As > TestNG Test
+
+
