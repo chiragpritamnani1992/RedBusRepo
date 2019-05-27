@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="RedBus Automation Suite">
+	
+	<!--  <listeners>
+		<listener class-name="com.qa.ExtentReportListener.ExtentReporterNG" />
+	</listeners>
+	-->
+	
+	
+	<test name="RedBus Testcases">
+		<classes>
+			<class name="com.qa.testcases.ManageBookingsTest"/>
+			
+		</classes>
+	</test>
+</suite>
