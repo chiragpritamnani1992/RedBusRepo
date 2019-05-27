@@ -2,6 +2,8 @@ package com.qa.testcases;
 
 
 
+import java.util.Properties;
+
 import org.sikuli.script.FindFailed;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -14,14 +16,18 @@ import com.qa.pages.HomePage;
 import com.qa.pages.ManageBookings;
 import com.qa.wrappermethod.Wrappermethods;
 
+import edu.emory.mathcs.backport.java.util.concurrent.TimeoutException;
+
 
 public class ManageBookingsTest  extends TestBase{
 
 	ManageBookings booking;
 	HomePage homepage;
 	static Wrappermethods methods;
+	static Properties prop;
 	static String sheetName="TripDetails";
-
+	static String sheetName_1="TicketDetails";
+			
 	
 	public ManageBookingsTest()
 	{
@@ -38,6 +44,26 @@ public class ManageBookingsTest  extends TestBase{
 		
 	}
 	
+	@DataProvider
+	public static Object[][] getRedBusTestData()
+	{
+		
+		Object data[][]= Wrappermethods.getTestData(sheetName);
+		
+		return data;
+	}
+	
+	@DataProvider
+	public static Object[][] getRedBusTestData_1()
+	{
+		
+		Object data[][]= Wrappermethods.getTestData(sheetName_1);
+		
+		return data;
+	}
+	
+	
+	
 	@Test(priority=1, groups="BR_01", dataProvider="getRedBusTestData")
 	public void enterLocation(String Source, String Destination, String Date) throws InterruptedException
 	{
@@ -46,13 +72,12 @@ public class ManageBookingsTest  extends TestBase{
 	}
 	
 	@Test(priority=2, groups="BR-01")
-	public void verifyTitleTest() throws InterruptedException
+	public void verifyTitleTest() throws InterruptedException, TimeoutException
 	{
 		String bookingtitle = booking.verifyBookingTitle();
 		System.out.println("Title of the Booking Page" + " : " + bookingtitle);
 		Assert.assertEquals(bookingtitle, "Search Bus Tickets", "Title Not Matched");
 		
-		Thread.sleep(3000);
 		
 		booking.busType();
 		
@@ -60,13 +85,14 @@ public class ManageBookingsTest  extends TestBase{
 	}
 	
 	
-	
-	@Test(priority=3,groups="BR-02",dataProvider="getRedBusTestData")
-	public void BookingSeats(String Passenger1_Name, String Passenger1_Age,String Passenger1_Gender, 
+	//dataProvider="getRedBusTestData"
+	@Test(priority=3,groups="BR-02",dataProvider="getRedBusTestData_1")
+	public void BookingSeats(String Passenger_Travel,String Passenger1_Name, String Passenger1_Age,String Passenger1_Gender, 
 			String Passenger2_Name, String Passenger2_Age,String Passenger2_Gender, String Passenger_Email_ID, String Passenger_PhoneNo) throws InterruptedException, FindFailed
 	{
 		
-		booking.viewSeats();
+		booking.viewSeats(Passenger_Travel);
+		
 		Thread.sleep(4000);
 		booking.clickSeats();
 		Thread.sleep(200);
@@ -98,16 +124,7 @@ public class ManageBookingsTest  extends TestBase{
 		
 	}
 	
-	@DataProvider
-	public static Object[][] getRedBusTestData()
-	{
-		
-		Object data[][]= Wrappermethods.getTestData(sheetName);
-		
-		return data;
-	}
-	
-	
+
 	
 	
 	

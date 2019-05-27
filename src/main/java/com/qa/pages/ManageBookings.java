@@ -1,18 +1,22 @@
 package com.qa.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+/*import org.openqa.selenium.JavascriptExecutor;*/
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+/*import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;*/
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
 import com.qa.base.TestBase;
 import com.qa.wrappermethod.Wrappermethods;
+
+import edu.emory.mathcs.backport.java.util.concurrent.TimeoutException;
 
 public class ManageBookings extends TestBase {
 	Wrappermethods methods = new Wrappermethods();
@@ -89,30 +93,49 @@ public class ManageBookings extends TestBase {
 	
 	
 	
-	public void busType()
+	public void busType() throws TimeoutException
 	{
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(type));
-		//boolean tcCheckIsDisplayed = type.isDisplayed();
-		
+		methods.waitforElementClickable(type);
 		type.click();
 	}
 	
-	public void sortByFare()
+	public void sortByFare() throws TimeoutException
 	{
+		//methods.waitforElementClickable(sort);
 		sort.click();
 	}
 
-	public void viewSeats() throws InterruptedException
+	public void viewSeats(String datasheet) throws InterruptedException
 	{
-		WebElement seats = driver.findElements(By.xpath("//div[text()='View Seats']")).get(1);
+		
+		int i=0;
+
+	       List<WebElement> ele=driver.findElements(By.xpath("//div[@class='button view-seats fr' and contains(.,'View Seats')]/preceding::div[@class='travels lh-24 f-bold d-color']"));
+	       for(WebElement e:ele)
+
+	       {
+
+	              if(e.getText().contains(datasheet))
+
+	              {
+
+	                     driver.findElement(By.xpath("(//div[@class='button view-seats fr' and contains(.,'View Seats')])["+i+"]")).click();
+	                     break;
+
+	              }
+
+	              i++;
+
+	       }
+		
+		/*WebElement seats = driver.findElements(By.xpath("//div[text()='View Seats']")).get(1);
 		
 		WebElement element = driver.findElement(By.xpath("//*[@id='12210989']/div/div[2]/div[1]"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		Thread.sleep(500); 
 		
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
-		executor.executeScript("arguments[0].click();", seats);
+		executor.executeScript("arguments[0].click();", seats);*/
 		
 	}
 	
@@ -130,7 +153,9 @@ public class ManageBookings extends TestBase {
 	
 	public void boardingPoint()
 	{
-		bPoint.click();
+		//bPoint.click();
+		Wrappermethods.cikcByJS(bPoint);
+		
 	}
 	
 	public void droppingPoint()

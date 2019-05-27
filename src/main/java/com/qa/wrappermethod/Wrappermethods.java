@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.NoSuchElementException;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -13,23 +14,32 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import edu.emory.mathcs.backport.java.util.concurrent.TimeoutException;
 
 public class Wrappermethods {
 
 	public static WebDriver driver;
+	static Properties prop;
 	public static Workbook book= null;
 	public static Sheet  sheet= null;
 	public static String TestSheetPath= "C:\\Users\\home\\workspace\\RedBus_Assignment\\src\\main\\java\\com\\qa\\testdata\\redbus_datasheet.xlsx";
+			
 	
+
 	
 	public static Object[][] getTestData(String sheetName)
 	{
 		
 		FileInputStream file= null;
+		
 		
 		try {
 			file = new FileInputStream(TestSheetPath);
@@ -75,6 +85,28 @@ public class Wrappermethods {
 	{
 		JavascriptExecutor js = ((JavascriptExecutor)driver);
 		js.executeScript("arguments[0].setAttribute('value','"+dateval+"');", element);
+	}
+	
+	
+	
+	
+	public void waitforElementClickable(WebElement element) throws TimeoutException
+	{
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch (NoSuchElementException e) {
+			
+			e.printStackTrace();
+		} catch (NoSuchWindowException te){
+			te.printStackTrace();
+		}
+	}
+	
+	public static void cikcByJS(WebElement ElementName)
+	{
+		JavascriptExecutor js = ((JavascriptExecutor)driver);
+		js.executeScript("arguments[0].click();", ElementName);
 	}
 	
 	
