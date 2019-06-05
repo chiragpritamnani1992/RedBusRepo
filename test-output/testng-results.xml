@@ -2,25 +2,25 @@
 <testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="51738" started-at="2019-05-27T17:13:28Z" finished-at="2019-05-27T17:14:20Z">
+  <suite name="Default suite" duration-ms="75616" started-at="2019-06-05T08:16:48Z" finished-at="2019-06-05T08:18:04Z">
     <groups>
       <group name="BR-01">
-        <method signature="ManageBookingsTest.verifyTitleTest()[pri:2, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="verifyTitleTest" class="com.qa.testcases.ManageBookingsTest"/>
+        <method signature="ManageBookingsTest.verifyTitleTest()[pri:2, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="verifyTitleTest" class="com.qa.testcases.ManageBookingsTest"/>
       </group> <!-- BR-01 -->
       <group name="BR-02">
-        <method signature="ManageBookingsTest.BookingSeats(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:3, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="BookingSeats" class="com.qa.testcases.ManageBookingsTest"/>
+        <method signature="ManageBookingsTest.BookingSeats(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:3, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="BookingSeats" class="com.qa.testcases.ManageBookingsTest"/>
       </group> <!-- BR-02 -->
       <group name="BR_01">
-        <method signature="ManageBookingsTest.enterLocation(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="enterLocation" class="com.qa.testcases.ManageBookingsTest"/>
+        <method signature="ManageBookingsTest.enterLocation(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="enterLocation" class="com.qa.testcases.ManageBookingsTest"/>
       </group> <!-- BR_01 -->
     </groups>
-    <test name="Default test" duration-ms="51738" started-at="2019-05-27T17:13:28Z" finished-at="2019-05-27T17:14:20Z">
+    <test name="Default test" duration-ms="75616" started-at="2019-06-05T08:16:48Z" finished-at="2019-06-05T08:18:04Z">
       <class name="com.qa.testcases.ManageBookingsTest">
-        <test-method status="PASS" signature="SetUp()[pri:0, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="SetUp" is-config="true" duration-ms="8445" started-at="2019-05-27T17:13:28Z" finished-at="2019-05-27T17:13:36Z">
+        <test-method status="PASS" signature="SetUp()[pri:0, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="SetUp" is-config="true" duration-ms="26482" started-at="2019-06-05T08:16:48Z" finished-at="2019-06-05T08:17:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SetUp -->
-        <test-method status="PASS" signature="enterLocation(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="enterLocation" duration-ms="10870" started-at="2019-05-27T17:13:39Z" data-provider="getRedBusTestData" finished-at="2019-05-27T17:13:49Z">
+        <test-method status="PASS" signature="enterLocation(java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="enterLocation" duration-ms="12763" started-at="2019-06-05T08:17:21Z" data-provider="getRedBusTestData" finished-at="2019-06-05T08:17:33Z">
           <params>
             <param index="0">
               <value>
@@ -34,55 +34,60 @@
             </param>
             <param index="2">
               <value>
-                <![CDATA[31-May 2019]]>
+                <![CDATA[11-Jun 2019]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- enterLocation -->
-        <test-method status="PASS" signature="verifyTitleTest()[pri:2, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="verifyTitleTest" duration-ms="3147" started-at="2019-05-27T17:13:49Z" finished-at="2019-05-27T17:13:53Z">
+        <test-method status="PASS" signature="verifyTitleTest()[pri:2, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="verifyTitleTest" duration-ms="3365" started-at="2019-06-05T08:17:33Z" finished-at="2019-06-05T08:17:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyTitleTest -->
-        <test-method status="PASS" signature="BookingSeats(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:3, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="BookingSeats" duration-ms="24806" started-at="2019-05-27T17:13:53Z" data-provider="getRedBusTestData_1" finished-at="2019-05-27T17:14:18Z">
+        <test-method status="PASS" signature="BookingSeats(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:3, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="BookingSeats" duration-ms="26429" started-at="2019-06-05T08:17:37Z" data-provider="getRedBusTestData_1" finished-at="2019-06-05T08:18:03Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Chirag P]]>
+                <![CDATA[Seabird Tourists]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[27]]>
+                <![CDATA[Chirag P]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Male]]>
+                <![CDATA[27]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[Paresh P]]>
+                <![CDATA[Male]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[40]]>
+                <![CDATA[Paresh P]]>
               </value>
             </param>
             <param index="5">
               <value>
-                <![CDATA[Male]]>
+                <![CDATA[40]]>
               </value>
             </param>
             <param index="6">
               <value>
-                <![CDATA[chirag@gmail.com]]>
+                <![CDATA[Male]]>
               </value>
             </param>
             <param index="7">
+              <value>
+                <![CDATA[chirag@gmail.com]]>
+              </value>
+            </param>
+            <param index="8">
               <value>
                 <![CDATA[9175837086]]>
               </value>
@@ -91,7 +96,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- BookingSeats -->
-        <test-method status="PASS" signature="TearDown()[pri:0, instance:com.qa.testcases.ManageBookingsTest@3a5ed7a6]" name="TearDown" is-config="true" duration-ms="2161" started-at="2019-05-27T17:14:18Z" finished-at="2019-05-27T17:14:20Z">
+        <test-method status="PASS" signature="TearDown()[pri:0, instance:com.qa.testcases.ManageBookingsTest@2a556333]" name="TearDown" is-config="true" duration-ms="370" started-at="2019-06-05T08:18:03Z" finished-at="2019-06-05T08:18:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->

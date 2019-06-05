@@ -1,8 +1,11 @@
 package com.qa.pages;
 
 
+
+import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +15,8 @@ import com.qa.base.TestBase;
 
 
 public class HomePage extends TestBase {
+	
+	Logger log = Logger.getLogger(HomePage.class);
 	
 	@FindBy(xpath="//input[@id='src']")
 	WebElement source;
@@ -49,9 +54,13 @@ public class HomePage extends TestBase {
 	public ManageBookings enterDetails(String src, String dest, String dt) throws InterruptedException
 	{
 		source.sendKeys(src);
+		log.info("Souce Entered:"+ " "+ src);
 		sourceClick.click();
+		
+		
 		Thread.sleep(2000);
 		destination.sendKeys(dest);
+		log.info("Destination Entered:"+ " "+ dest);
 		Thread.sleep(2000);
 		destClick.click();
 		
@@ -60,10 +69,10 @@ public class HomePage extends TestBase {
 		String month_year=split[1];
 		String day = split[0];
 		selectDate(month_year,day);
-		
+		log.info("Onward date selected :"+ " "+ dt);
 		Thread.sleep(2000);
 		searchBtn.click();
-		
+		log.info("Clicked on search button");
 		return new ManageBookings();
 	}
 	
@@ -92,6 +101,7 @@ public class HomePage extends TestBase {
 		String split[] = date.split("-");
 		String month_year=split[1];
 		String day = split[0];
+		
 		selectDate(month_year,day);
 
 	}
@@ -102,47 +112,87 @@ public class HomePage extends TestBase {
 		return new ManageBookings();
 	}
 	
-	public void selectDate(String monthYear,String day)
+	public void selectDate(String monthYear,String day) throws InterruptedException
+	
 	{
-		driver.findElement(By.xpath("//span[@class='fl icon-calendar_icon-new icon-onward-calendar icon']")).click();
-		
-		String beforeXpath = "//*[@id='rb-calendar_onward_cal']/table/tbody/tr[";
-		String afterXpath = "]/td[";
+	
+		List<WebElement> months =driver.findElements(By.xpath("//*[@id='rb-calendar_onward_cal']/table/tbody/tr[1]/td[2]"));
+		for(int i=0;i<months.size();i++)
 
-		final int TotalNoofWeeks = 7;
-		boolean flag = false;
+		{
+			if(months.get(i).getText().equals(monthYear))
+			{
 
-		String dayVal = null;
 
-		for (int rowNum = 3; rowNum <= 7; rowNum++) {
-			for (int colNum = 1; colNum <= TotalNoofWeeks; colNum++) {
+				String beforeXpath = "//*[@id='rb-calendar_onward_cal']/table/tbody/tr[";
+				String afterXpath = "]/td[";
 
-				try {
+				final int TotalNoofWeeks = 7;
+				boolean flag = false;
 
-					dayVal = driver.findElement(By.xpath(beforeXpath + rowNum + afterXpath + colNum + "]")).getText();
+				String dayVal = null;
+				for (int rowNum = 3; rowNum <= 7; rowNum++)
+				{
+					for (int colNum = 1; colNum <= TotalNoofWeeks; colNum++)
+					{
 
-				} catch (NoSuchElementException e) {
-					System.out.println("Pelase enter correct value");
-					flag = false;
-					break;
+						try {
+
+							dayVal = driver.findElement(By.xpath(beforeXpath + rowNum + afterXpath + colNum + "]")).getText();
+
+						} catch (NoSuchElementException e) {
+							System.out.println("Pelase enter correct value");
+							flag = false;
+							break;
+						}
+
+						if (dayVal.equals(day)) {
+							driver.findElement(By.xpath(beforeXpath + rowNum + afterXpath + colNum + "]")).click();
+							flag = true;
+							break;
+
+						}
+						if (flag) {
+							break;
+						}
+						
+					}
+					
 				}
-
-				//System.out.println(dayVal);
-
-				if (dayVal.equals(day)) {
-					driver.findElement(By.xpath(beforeXpath + rowNum + afterXpath + colNum + "]")).click();
-					flag = true;
-					break;
-
-				}
-				if (flag) {
-					break;
-				}
+				
 			}
+			
+			else
+			{
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("//td[@class='next']//following::button[2]")).click();
+				selectDate(monthYear,day);
+				
+			}
+			
+
+
 		}
 
-	}	
-
+	}
+	
+	
+	
+	
 }
 
-	
+
+
+
+
+
+/*List<WebElement> months =driver.findElements(By.xpath("//*[@id='rb-calendar_onward_cal']/table/tbody/tr[1]/td[2]"));
+for(int i=0;i<months.size();i++)
+
+{
+	if(months.get(i).getText().equals(monthYear))
+	{*/
+/*Thread.sleep(3000);
+driver.findElement(By.xpath("//td[@class='next']//following::button[2]")).click();
+Thread.sleep(3000);
+selectDate(monthYear,day);*/

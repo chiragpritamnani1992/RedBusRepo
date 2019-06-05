@@ -1,64 +1,66 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>RedBus_Assignment</groupId>
-  <artifactId>RedBus_Assignment</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>RedBus_Assignment</groupId>
+	<artifactId>RedBus_Assignment</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>RedBus_Assignment</name>
-  <url>http://maven.apache.org</url>
+	<name>RedBus_Assignment</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-  <dependencies>
-   <dependency>
-     <groupId>org.apache.maven.plugins</groupId>
-     <artifactId>maven-surefire-plugin</artifactId>
-     <version>2.19.1</version>
-     
-    </dependency>
-  
-  <dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-</dependency>
-    
-  
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>2.19.1</version>
 
-  <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
-<dependency>
-    <groupId>com.sikulix</groupId>
-    <artifactId>sikulixapi</artifactId>
-    <version>1.1.0</version>
-</dependency>
-  
-  
- <dependency>
-     <groupId>org.apache.maven.plugins</groupId>
-     <artifactId>maven-compiler-plugin</artifactId>
-     <version> 3.7.0 </version>
-     
-    </dependency>
-    
-    <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-java</artifactId>
-        <version>3.13.0</version>
-    </dependency> 
-    
-   
-	<dependency>
-    	<groupId>org.testng</groupId>
-    	<artifactId>testng</artifactId>
-    	<version>6.14.3</version>
-    	<scope>compile</scope>
-	</dependency>
-	<dependency>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+	
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
+		<dependency>
+			<groupId>com.sikulix</groupId>
+			<artifactId>sikulixapi</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version> 3.7.0 </version>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.13.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.14.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.16-beta2</version>
@@ -122,8 +124,8 @@
 			<artifactId>openxml4j</artifactId>
 			<version>1.0-beta</version>
 		</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
+
+		<!-- https://mvnrepository.com/artifact/com.relevantcodes/extentreports -->
 		<dependency>
 			<groupId>com.relevantcodes</groupId>
 			<artifactId>extentreports</artifactId>
@@ -136,7 +138,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
-	
 
-  </dependencies>
+
+	</dependencies>
 </project>

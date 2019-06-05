@@ -1,12 +1,15 @@
 package com.qa.pages;
 
 
+import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,6 +25,7 @@ import edu.emory.mathcs.backport.java.util.concurrent.TimeoutException;
 
 public class ManageBookings extends TestBase {
 	Wrappermethods methods = new Wrappermethods();
+	static Logger log = Logger.getLogger(ManageBookings.class);
 	
 	@FindBy(xpath="//label[@class='custom-checkbox' and @for='bt_AC']")
 	WebElement type;
@@ -99,56 +103,60 @@ public class ManageBookings extends TestBase {
 	{
 		
 		type.click();
+		log.info("Bus Type Checkbox Selected");
+		
 	}
 	
 	public void sortByFare() throws TimeoutException
 	{
 	
 		sort.click();
+		log.info("Clicked on sort");
 	}
 
-	public void viewSeats() throws InterruptedException
+	public void viewSeats(String busname)
 	{
+	/*{
 		
-		
-		/* int i=0;
-
-	       List<WebElement> ele=driver.findElements(By.xpath("//div[@class='button view-seats fr' and contains(.,'View Seats')]/preceding::div[@class='travels lh-24 f-bold d-color']"));
-	       for(WebElement e:ele)
-	       {
-
-	              if(e.getText().contains("Seabird Tourists"))
-
-	              {
-	            	WebElement element = driver.findElement(By.xpath("//*[@id='11475720']/div/div[2]/div[1]"));
-	          		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-	          		Thread.sleep(500); 
-	          		driver.findElement(By.xpath("(//div[@class='button view-seats fr' and contains(.,'View Seats')])["+i+"]")).click();
-	                break;
-	              }
-
-	              i++;
-
-	       }*/
 		WebElement seats = driver.findElements(By.xpath("//div[text()='View Seats']")).get(1);
-		
-		WebElement element = driver.findElement(By.xpath("//*[@id='12210989']/div/div[2]/div[1]"));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(500); 
-		
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", seats);
 		
+	}*/
+
+			int i=0;
+
+	       List<WebElement> ele=driver.findElements(By.xpath("//div[@class='button view-seats fr' and contains(.,'View Seats')]/preceding::div[@class='travels lh-24 f-bold d-color']"));
+	       for(WebElement e:ele)
+
+	       {
+	              if(e.getText().contains(busname))
+
+	              {
+	            	  //driver.findElement(By.xpath("//div[@class='button view-seats fr' and contains(.,'View Seats')]["+i+"]")).click();
+	            		WebElement seats = driver.findElements(By.xpath("//div[text()='View Seats']")).get(i);
+	            		JavascriptExecutor executor = (JavascriptExecutor)driver;
+	            		executor.executeScript("arguments[0].click();", seats);
+	            		break;
+	              }
+
+	             i++;
+	   
+	       }
 	}
+
+	
 	
 	public void clickSeats() throws FindFailed, InterruptedException
 	{
 		Screen sc = new Screen();
-		Pattern imag1 = new Pattern("C:\\Users\\home\\workspace\\RedBus_Assignment\\src\\main\\java\\com\\qa\\img\\seat.png");
+		Pattern imag1 = new Pattern("../RedBus_Assignment/src/main/java/com/qa/img/seat.png");
 		sc.click(imag1);
+		log.info("1st seat is selected");
 		Thread.sleep(2000);
-		Pattern imag2 = new Pattern("C:\\Users\\home\\workspace\\RedBus_Assignment\\src\\main\\java\\com\\qa\\img\\seat_2.png");
+		Pattern imag2 = new Pattern("../RedBus_Assignment/src/main/java/com/qa/img/seat_2.png");
 		sc.click(imag2);
+		log.info("2nd seat is selected");
 	}
 	
 	
@@ -156,6 +164,7 @@ public class ManageBookings extends TestBase {
 	public void boardingPoint()
 	{
 		bPoint.click();		
+		
 	}
 	
 	public void droppingPoint()

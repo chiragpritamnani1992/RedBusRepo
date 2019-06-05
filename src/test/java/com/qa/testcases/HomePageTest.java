@@ -47,7 +47,7 @@ public class HomePageTest extends TestBase{
 	}
 	
 	
-	@Test(priority=1, groups="Br-02",dataProvider="getRedBusTestData")
+	@Test(priority=1, groups="Br-02")
 	public void TripDetails() throws InterruptedException
 	{
 		

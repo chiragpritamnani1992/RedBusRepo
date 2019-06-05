@@ -30,7 +30,7 @@ public class Wrappermethods {
 	static Properties prop;
 	public static Workbook book= null;
 	public static Sheet  sheet= null;
-	public static String TestSheetPath= "C:\\Users\\home\\workspace\\RedBus_Assignment\\src\\main\\java\\com\\qa\\testdata\\redbus_datasheet.xlsx";
+	public static String TestSheetPath= "../RedBus_Assignment/src/main/java/com/qa/testdata/redbus_datasheet.xlsx";
 			
 	
 

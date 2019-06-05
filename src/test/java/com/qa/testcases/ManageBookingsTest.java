@@ -4,7 +4,7 @@ package com.qa.testcases;
 
 import java.util.Properties;
 
-
+import org.apache.log4j.Logger;
 import org.sikuli.script.FindFailed;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -28,7 +28,8 @@ public class ManageBookingsTest  extends TestBase{
 	static Properties prop;
 	static String sheetName="TripDetails";
 	static String sheetName_1="TicketDetails";
-			
+	Logger log = Logger.getLogger(ManageBookingsTest.class);
+	
 	
 	public ManageBookingsTest()
 	{
@@ -39,7 +40,9 @@ public class ManageBookingsTest  extends TestBase{
 	@BeforeClass()
 	public void SetUp() throws InterruptedException
 	{
+	
 		intilization();
+		
 		methods = new Wrappermethods();
 		homepage = new HomePage();
 		
@@ -68,14 +71,18 @@ public class ManageBookingsTest  extends TestBase{
 	@Test(priority=1, groups="BR_01", dataProvider="getRedBusTestData")
 	public void enterLocation(String Source, String Destination, String Date) throws InterruptedException
 	{
+		
 		booking= homepage.enterDetails(Source, Destination, Date);
+		log.info("Location details entered");
+	
+	
 	}
 	
 	@Test(priority=2, groups="BR-01")
 	public void verifyTitleTest() throws InterruptedException, TimeoutException
 	{
 		String bookingtitle = booking.verifyBookingTitle();
-		System.out.println("Title of the Booking Page" + " : " + bookingtitle);
+		log.info("Title of the Booking Page" + " : " + bookingtitle);
 		Assert.assertEquals(bookingtitle, "Search Bus Tickets", "Title Not Matched");
 		
 		
@@ -87,16 +94,19 @@ public class ManageBookingsTest  extends TestBase{
 	
 	
 	@Test(priority=3,groups="BR-02",dataProvider="getRedBusTestData_1")
-	public void BookingSeats(String Passenger1_Name, String Passenger1_Age,String Passenger1_Gender, 
+	public void BookingSeats(String Busname,String Passenger1_Name, String Passenger1_Age,String Passenger1_Gender, 
 			String Passenger2_Name, String Passenger2_Age,String Passenger2_Gender, String Passenger_Email_ID, String Passenger_PhoneNo) throws InterruptedException, FindFailed, TimeoutException
 	{
 		
-		booking.viewSeats();
+		booking.viewSeats(Busname);
 		Thread.sleep(4000);
 		booking.clickSeats();
 		booking.boardingPoint();
+		log.info("Boarding Point selected");
 		booking.droppingPoint();
+		log.info("Dropped Point selected");
 		booking.proceedtopay();
+		log.info("Clicked on proceed to pay button");
 		booking.passenger1_Details(Passenger1_Name, Passenger1_Age, Passenger1_Gender);
 		booking.passenger2_Details(Passenger2_Name, Passenger2_Age, Passenger2_Gender);
 		booking.contactDetails(Passenger_Email_ID, Passenger_PhoneNo);
@@ -106,11 +116,12 @@ public class ManageBookingsTest  extends TestBase{
 		
 		if(title.equals("Please pay to book your ticket on Seabird Tourists"))
 		{
-			System.out.println("Congratulations!! You are one step away to complete your payment process");
+		
+			log.info("Congratulations!! You are one step away to complete your payment process");
 		}
 		else
 		{
-			System.out.println("Something went wrong..Please try again");
+			log.info("Something went wrong..Please try again");
 		}
 	
 		
@@ -123,7 +134,9 @@ public class ManageBookingsTest  extends TestBase{
 	@AfterClass
 	public void TearDown()
 	{
+		
 		driver.close();
+		
 	}
 	
 	
