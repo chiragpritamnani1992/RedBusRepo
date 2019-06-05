@@ -27,6 +27,7 @@ public class TestBase {
 		try {
 			prop= new Properties();
 			FileInputStream ip = new FileInputStream("../RedBus_Assignment/src/main/java/com/qa/config/config.properties");
+			// Local path was added:
 			//C:\\Users\\home\\workspace\\RedBus_Assignment\\src\\main\\java\\com\\qa\\config\\config.properties
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
@@ -78,63 +79,7 @@ public class TestBase {
 	
 	
 }
-	/*public TestBase()
-	{
-			try {
 			
-			FileInputStream ip = new FileInputStream("../RedBus_Assignment/src/main/java/com/qa/config/config.properties");
-			System.out.println("File Loading");
-			prop.load(ip);
-				
-		}
-		catch (FileNotFoundException e)
-		{
-		  e.printStackTrace();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
-	
-	public static void intilization()
-	{
-		String browsername = prop.getProperty("browser");
-		
-		if(browsername.equals("chrome"))
-		{
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\home\\workspace\\RedBus_Assignment"
-					+ "\\src\\main\\java\\com\\qa\\drivers\\chromedriver.exe");
-			driver = new ChromeDriver();
-			log.info("Launching Chrome Browser");
-			driver.manage().window().maximize();
-		}
-		else if(browsername.equals("firefox"))
-		{
-			System.setProperty("webdriver.gecko.driver","C:\\Users\\home\\workspace\\RedBus_Assignment"
-					+ "\\src\\main\\java\\com\\qa\\drivers\\geckodriver.exe");
-			driver = new FirefoxDriver();
-			log.info("Launching FireFox Browser");
-		}
-		
-		
-		e_driver = new EventFiringWebDriver(driver);
-		eventlistener = new WebEventListener();
-		e_driver.register(eventlistener);
-		driver= e_driver;
-		
-		
-		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.get(prop.getProperty("url"));
-		log.info("Entering application Url:" + " "+ prop.getProperty("url"));
-			
-	}
 	
 	
 	
-	
-}
-*/
